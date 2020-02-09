@@ -8,6 +8,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         let viewController = ViewController(title: "Steppy")
         let navigationViewController = UINavigationController(rootViewController: viewController)
+        navigationViewController.navigationBar.isTranslucent = false
         window = UIWindow.init(frame: UIScreen.main.bounds)
         window?.rootViewController = navigationViewController
         window?.makeKeyAndVisible()
