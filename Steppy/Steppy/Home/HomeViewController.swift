@@ -1,7 +1,7 @@
 import UIKit
 import HealthKit
 
-class ViewController: UIViewController {
+class HomeViewController: UIViewController {
     let stepsLabel: UILabel = UILabel(frame: CGRect.zero)
     init(title: String) {
         super.init(nibName: nil, bundle: nil)
@@ -19,7 +19,7 @@ class ViewController: UIViewController {
     }
 }
 
-extension ViewController {
+extension HomeViewController {
     private func setupUI() {
         let health = UIBarButtonItem(
             title: "Health",
@@ -58,7 +58,7 @@ extension ViewController {
 }
 
 /// MARK - TODO: Extract HealthKit
-extension ViewController {
+extension HomeViewController {
     
     func requestAuthorization(completion: @escaping (Bool, Error?) -> Void) {
         let objectTypesToRead: Set<HKObjectType> = [HKObjectType.quantityType(forIdentifier: .stepCount)!]
