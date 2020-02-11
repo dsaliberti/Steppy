@@ -53,7 +53,7 @@ class OnboardingViewController: UIViewController {
             id: RowId.username,
             component: Component.TextInput(
                 title: "e-mail: ",
-                placeholder: "type your e-mail or username here",
+                placeholder: "e-mail or username here",
                 keyboardType: .emailAddress,
                 isEnabled: true,
                 textWillChange: nil,
@@ -68,7 +68,7 @@ class OnboardingViewController: UIViewController {
             id: RowId.password,
             component: Component.TextInput(
                 title: "password: ",
-                placeholder: "type your password here",
+                placeholder: "password here",
                 keyboardType: .alphabet,
                 isEnabled: true,
                 textWillChange: nil,
@@ -79,6 +79,10 @@ class OnboardingViewController: UIViewController {
             )
         )
 
+        func tap() {
+            keychain.setToken("token-here-to-test")
+        }
+
         let sendButton = Node(
             id: RowId.sendButton,
             component: Component.Button(
@@ -86,6 +90,7 @@ class OnboardingViewController: UIViewController {
                 isEnabled: true,
                 didTap: {
                     print("tapped ")
+                    tap()
                 },
                 styleSheet: Component.Button.StyleSheet(button: ButtonStyleSheet())
             )
