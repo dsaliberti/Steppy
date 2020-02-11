@@ -14,12 +14,16 @@
 		DD8CFAFB23F05C990095E71E /* SteppyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8CFAFA23F05C990095E71E /* SteppyTests.swift */; };
 		DD8CFB0823F06AEE0095E71E /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD8CFB0723F06AEE0095E71E /* HealthKit.framework */; };
 		DDD0E36E23F0CEFA00C74570 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD0E36D23F0CEFA00C74570 /* HomeViewModel.swift */; };
-		DDD0E37023F0CF3C00C74570 /* AppViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD0E36F23F0CF3C00C74570 /* AppViewModel.swift */; };
+		DDD0E37023F0CF3C00C74570 /* AppRootViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD0E36F23F0CF3C00C74570 /* AppRootViewModel.swift */; };
 		DDD0E37523F0D26A00C74570 /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD0E37423F0D26A00C74570 /* OnboardingViewModel.swift */; };
-		DDD0E37723F0D36E00C74570 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD0E37623F0D36E00C74570 /* Networking.swift */; };
+		DDD0E37723F0D36E00C74570 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD0E37623F0D36E00C74570 /* Network.swift */; };
 		DDD0E37923F0D3D000C74570 /* HomeBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD0E37823F0D3D000C74570 /* HomeBuilder.swift */; };
 		DDD0E37B23F0D43600C74570 /* OnboardingBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD0E37A23F0D43600C74570 /* OnboardingBuilder.swift */; };
 		DDD0E37E23F0D4F400C74570 /* HKViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD0E37D23F0D4F400C74570 /* HKViewModel.swift */; };
+		DDD0E38323F1BAE300C74570 /* AppRootBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD0E38223F1BAE300C74570 /* AppRootBuilder.swift */; };
+		DDD0E39123F225E800C74570 /* AppRootFlowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD0E39023F225E800C74570 /* AppRootFlowController.swift */; };
+		DDD0E39523F242EF00C74570 /* AppRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD0E39423F242EF00C74570 /* AppRootViewController.swift */; };
+		F9B1CBEDF2E757F111A7EAB9 /* libPods-Steppy.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7580B19F622A5C6F2FC6569A /* libPods-Steppy.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,6 +37,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5095E1FAC1A78627313E34A8 /* Pods-Steppy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Steppy.release.xcconfig"; path = "Target Support Files/Pods-Steppy/Pods-Steppy.release.xcconfig"; sourceTree = "<group>"; };
+		7580B19F622A5C6F2FC6569A /* libPods-Steppy.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Steppy.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD8CFAE223F05C970095E71E /* Steppy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Steppy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD8CFAE523F05C970095E71E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DD8CFAE723F05C970095E71E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };

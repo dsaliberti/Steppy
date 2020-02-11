@@ -3,9 +3,11 @@ import HealthKit
 
 class HomeViewController: UIViewController {
     let stepsLabel: UILabel = UILabel(frame: CGRect.zero)
-    init(title: String) {
+    let keychain: SteppyKeychain
+    init(title: String, keychain: SteppyKeychain) {
+        self.keychain = keychain
         super.init(nibName: nil, bundle: nil)
-        view.backgroundColor = .black
+        view.backgroundColor = .white
         self.title = title
     }
     
@@ -29,7 +31,7 @@ extension HomeViewController {
         )
         self.navigationItem.rightBarButtonItem = health
 
-        stepsLabel.textColor = .white
+        stepsLabel.textColor = .black
         stepsLabel.text = ".. steps 👣"
         stepsLabel.sizeToFit()
 
@@ -37,6 +39,16 @@ extension HomeViewController {
 
         let gesture = UITapGestureRecognizer(target: self, action: #selector(writeSteps))
         view.addGestureRecognizer(gesture)
+
+        let logout = UIButton(frame: CGRect.init(x: 30, y: 70, width: 200, height: 60))
+        logout.titleLabel?.text = ".. Logout"
+        logout.backgroundColor = .red
+        logout.addTarget(self, action: #selector(HomeViewController.logout), for: .touchUpInside)
+        view.addSubview(logout)
+    }
+
+    @objc func logout() {
+        keychain.clearToken()
     }
 
     @objc func requestAndPresent() {

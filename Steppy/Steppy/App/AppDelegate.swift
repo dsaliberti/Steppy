@@ -6,12 +6,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        let viewController = HomeViewController(title: "Steppy")
-        let navigationViewController = UINavigationController(rootViewController: viewController)
-        navigationViewController.navigationBar.isTranslucent = false
-        window = UIWindow.init(frame: UIScreen.main.bounds)
-        window?.rootViewController = navigationViewController
-        window?.makeKeyAndVisible()
+        window = AppRootBuilder().makeAppRoot()
         return true
     }
 
