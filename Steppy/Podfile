@@ -4,4 +4,5 @@ pod 'KeychainAccess'
 pod 'ReactiveSwift', '~> 6.0'
 pod 'ReactiveFeedback', '~> 0.7'
 pod 'ReactiveCocoa', '~> 10.0'
+pod 'Bento'
 inhibit_all_warnings!

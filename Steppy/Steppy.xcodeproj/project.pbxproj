@@ -20,9 +20,12 @@
 		DDD0E37923F0D3D000C74570 /* HomeBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD0E37823F0D3D000C74570 /* HomeBuilder.swift */; };
 		DDD0E37B23F0D43600C74570 /* OnboardingBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD0E37A23F0D43600C74570 /* OnboardingBuilder.swift */; };
 		DDD0E37E23F0D4F400C74570 /* HKViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD0E37D23F0D4F400C74570 /* HKViewModel.swift */; };
+		DDD0E38123F1983900C74570 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD0E38023F1983900C74570 /* OnboardingViewController.swift */; };
 		DDD0E38323F1BAE300C74570 /* AppRootBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD0E38223F1BAE300C74570 /* AppRootBuilder.swift */; };
 		DDD0E39123F225E800C74570 /* AppRootFlowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD0E39023F225E800C74570 /* AppRootFlowController.swift */; };
 		DDD0E39523F242EF00C74570 /* AppRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD0E39423F242EF00C74570 /* AppRootViewController.swift */; };
+		DDD0E39723F2B7C400C74570 /* NSLayoutConstraintExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD0E39623F2B7C400C74570 /* NSLayoutConstraintExtensions.swift */; };
+		DDD0E39923F2B7CC00C74570 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD0E39823F2B7CB00C74570 /* UIViewExtensions.swift */; };
 		F9B1CBEDF2E757F111A7EAB9 /* libPods-Steppy.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7580B19F622A5C6F2FC6569A /* libPods-Steppy.a */; };
 /* End PBXBuildFile section */
 
@@ -57,6 +60,10 @@
 		DDD0E37823F0D3D000C74570 /* HomeBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBuilder.swift; sourceTree = "<group>"; };
 		DDD0E37A23F0D43600C74570 /* OnboardingBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingBuilder.swift; sourceTree = "<group>"; };
 		DDD0E37D23F0D4F400C74570 /* HKViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HKViewModel.swift; sourceTree = "<group>"; };
+		DDD0E38023F1983900C74570 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		DDD0E39623F2B7C400C74570 /* NSLayoutConstraintExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSLayoutConstraintExtensions.swift; sourceTree = "<group>"; };
+		DDD0E39823F2B7CB00C74570 /* UIViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
+		F1339D1241F21EF3485AED50 /* Pods-Steppy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Steppy.debug.xcconfig"; path = "Target Support Files/Pods-Steppy/Pods-Steppy.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +72,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DD8CFB0823F06AEE0095E71E /* HealthKit.framework in Frameworks */,
+				F9B1CBEDF2E757F111A7EAB9 /* libPods-Steppy.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +86,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9C1FEB9D59EF88149608C84A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F1339D1241F21EF3485AED50 /* Pods-Steppy.debug.xcconfig */,
+				5095E1FAC1A78627313E34A8 /* Pods-Steppy.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		DD8CFAD923F05C970095E71E = {
 			isa = PBXGroup;
 			children = (
@@ -85,6 +102,7 @@
 				DD8CFAF923F05C990095E71E /* SteppyTests */,
 				DD8CFAE323F05C970095E71E /* Products */,
 				DD8CFB0623F06AEE0095E71E /* Frameworks */,
+				9C1FEB9D59EF88149608C84A /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -134,6 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				DD8CFB0723F06AEE0095E71E /* HealthKit.framework */,
+				7580B19F622A5C6F2FC6569A /* libPods-Steppy.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -162,6 +181,7 @@
 			children = (
 				DDD0E37423F0D26A00C74570 /* OnboardingViewModel.swift */,
 				DDD0E37A23F0D43600C74570 /* OnboardingBuilder.swift */,
+				DDD0E38023F1983900C74570 /* OnboardingViewController.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -182,6 +202,15 @@
 			path = HealthKit;
 			sourceTree = "<group>";
 		};
+		DDD0E38D23F21C6200C74570 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				DDD0E39823F2B7CB00C74570 /* UIViewExtensions.swift */,
+				DDD0E39623F2B7C400C74570 /* NSLayoutConstraintExtensions.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -189,9 +218,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DD8CFAFF23F05C990095E71E /* Build configuration list for PBXNativeTarget "Steppy" */;
 			buildPhases = (
+				FB23737A37A4865D1891B3F6 /* [CP] Check Pods Manifest.lock */,
 				DD8CFADE23F05C970095E71E /* Sources */,
 				DD8CFADF23F05C970095E71E /* Frameworks */,
 				DD8CFAE023F05C970095E71E /* Resources */,
+				E4D39A0F0F8CC7041E5D4B4E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -282,6 +313,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		E4D39A0F0F8CC7041E5D4B4E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Steppy/Pods-Steppy-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Steppy/Pods-Steppy-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Steppy/Pods-Steppy-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FB23737A37A4865D1891B3F6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Steppy-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		DD8CFADE23F05C970095E71E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -290,12 +363,14 @@
 				DDD0E37523F0D26A00C74570 /* OnboardingViewModel.swift in Sources */,
 				DD8CFAE823F05C970095E71E /* HomeViewController.swift in Sources */,
 				DDD0E36E23F0CEFA00C74570 /* HomeViewModel.swift in Sources */,
+				DDD0E39723F2B7C400C74570 /* NSLayoutConstraintExtensions.swift in Sources */,
 				DDD0E37923F0D3D000C74570 /* HomeBuilder.swift in Sources */,
 				DDD0E37B23F0D43600C74570 /* OnboardingBuilder.swift in Sources */,
 				DDD0E37723F0D36E00C74570 /* Networking.swift in Sources */,
 				DDD0E37023F0CF3C00C74570 /* AppViewModel.swift in Sources */,
 				DDD0E37E23F0D4F400C74570 /* HKViewModel.swift in Sources */,
 				DD8CFAE623F05C970095E71E /* AppDelegate.swift in Sources */,
+				DDD0E39923F2B7CC00C74570 /* UIViewExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -447,6 +522,7 @@
 		};
 		DD8CFB0023F05C990095E71E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F1339D1241F21EF3485AED50 /* Pods-Steppy.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Steppy/Support Files/Steppy.entitlements";
@@ -466,6 +542,7 @@
 		};
 		DD8CFB0123F05C990095E71E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5095E1FAC1A78627313E34A8 /* Pods-Steppy.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Steppy/Support Files/Steppy.entitlements";
