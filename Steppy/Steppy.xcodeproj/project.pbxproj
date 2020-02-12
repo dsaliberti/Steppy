@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -14,7 +14,6 @@
 		DD8CFAFB23F05C990095E71E /* SteppyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8CFAFA23F05C990095E71E /* SteppyTests.swift */; };
 		DD8CFB0823F06AEE0095E71E /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD8CFB0723F06AEE0095E71E /* HealthKit.framework */; };
 		DDD0E36E23F0CEFA00C74570 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD0E36D23F0CEFA00C74570 /* HomeViewModel.swift */; };
-		DDD0E37023F0CF3C00C74570 /* AppRootViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD0E36F23F0CF3C00C74570 /* AppRootViewModel.swift */; };
 		DDD0E37523F0D26A00C74570 /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD0E37423F0D26A00C74570 /* OnboardingViewModel.swift */; };
 		DDD0E37723F0D36E00C74570 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD0E37623F0D36E00C74570 /* Network.swift */; };
 		DDD0E37923F0D3D000C74570 /* HomeBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD0E37823F0D3D000C74570 /* HomeBuilder.swift */; };
@@ -22,8 +21,9 @@
 		DDD0E37E23F0D4F400C74570 /* HKViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD0E37D23F0D4F400C74570 /* HKViewModel.swift */; };
 		DDD0E38123F1983900C74570 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD0E38023F1983900C74570 /* OnboardingViewController.swift */; };
 		DDD0E38323F1BAE300C74570 /* AppRootBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD0E38223F1BAE300C74570 /* AppRootBuilder.swift */; };
-		DDD0E39123F225E800C74570 /* AppRootFlowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD0E39023F225E800C74570 /* AppRootFlowController.swift */; };
-		DDD0E39523F242EF00C74570 /* AppRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD0E39423F242EF00C74570 /* AppRootViewController.swift */; };
+		DDD0E38623F1C02E00C74570 /* SteppyBusinessController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD0E38523F1C02E00C74570 /* SteppyBusinessController.swift */; };
+		DDD0E38923F1E15200C74570 /* Flow.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD0E38823F1E15200C74570 /* Flow.swift */; };
+		DDD0E38C23F1EB8F00C74570 /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD0E38B23F1EB8F00C74570 /* Keychain.swift */; };
 		DDD0E39723F2B7C400C74570 /* NSLayoutConstraintExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD0E39623F2B7C400C74570 /* NSLayoutConstraintExtensions.swift */; };
 		DDD0E39923F2B7CC00C74570 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD0E39823F2B7CB00C74570 /* UIViewExtensions.swift */; };
 		F9B1CBEDF2E757F111A7EAB9 /* libPods-Steppy.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7580B19F622A5C6F2FC6569A /* libPods-Steppy.a */; };
@@ -54,13 +54,16 @@
 		DD8CFB0723F06AEE0095E71E /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		DD8CFB0923F06AEE0095E71E /* Steppy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Steppy.entitlements; sourceTree = "<group>"; };
 		DDD0E36D23F0CEFA00C74570 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
-		DDD0E36F23F0CF3C00C74570 /* AppViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppViewModel.swift; sourceTree = "<group>"; };
 		DDD0E37423F0D26A00C74570 /* OnboardingViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
-		DDD0E37623F0D36E00C74570 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
+		DDD0E37623F0D36E00C74570 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		DDD0E37823F0D3D000C74570 /* HomeBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBuilder.swift; sourceTree = "<group>"; };
 		DDD0E37A23F0D43600C74570 /* OnboardingBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingBuilder.swift; sourceTree = "<group>"; };
 		DDD0E37D23F0D4F400C74570 /* HKViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HKViewModel.swift; sourceTree = "<group>"; };
 		DDD0E38023F1983900C74570 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		DDD0E38223F1BAE300C74570 /* AppRootBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRootBuilder.swift; sourceTree = "<group>"; };
+		DDD0E38523F1C02E00C74570 /* SteppyBusinessController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SteppyBusinessController.swift; sourceTree = "<group>"; };
+		DDD0E38823F1E15200C74570 /* Flow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flow.swift; sourceTree = "<group>"; };
+		DDD0E38B23F1EB8F00C74570 /* Keychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
 		DDD0E39623F2B7C400C74570 /* NSLayoutConstraintExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSLayoutConstraintExtensions.swift; sourceTree = "<group>"; };
 		DDD0E39823F2B7CB00C74570 /* UIViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 		F1339D1241F21EF3485AED50 /* Pods-Steppy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Steppy.debug.xcconfig"; path = "Target Support Files/Pods-Steppy/Pods-Steppy.debug.xcconfig"; sourceTree = "<group>"; };
@@ -118,11 +121,15 @@
 		DD8CFAE423F05C970095E71E /* Steppy */ = {
 			isa = PBXGroup;
 			children = (
-				DDD0E37C23F0D4B500C74570 /* HealthKit */,
-				DDD0E37323F0D0C200C74570 /* Networking */,
+				DDD0E38A23F1EB4500C74570 /* Keychain */,
 				DDD0E36A23F0CE9B00C74570 /* App */,
 				DDD0E36C23F0CED300C74570 /* Onboarding */,
 				DDD0E36B23F0CEA400C74570 /* Home */,
+				DDD0E37C23F0D4B500C74570 /* HealthKit */,
+				DDD0E38423F1C00600C74570 /* BusinessController */,
+				DDD0E37323F0D0C200C74570 /* Network */,
+				DDD0E38723F1E14400C74570 /* Flow */,
+				DDD0E38D23F21C6200C74570 /* Helpers */,
 				DD8CFB0523F060190095E71E /* Support Files */,
 			);
 			path = Steppy;
@@ -161,7 +168,7 @@
 			isa = PBXGroup;
 			children = (
 				DD8CFAE523F05C970095E71E /* AppDelegate.swift */,
-				DDD0E36F23F0CF3C00C74570 /* AppViewModel.swift */,
+				DDD0E38223F1BAE300C74570 /* AppRootBuilder.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -186,12 +193,12 @@
 			path = Onboarding;
 			sourceTree = "<group>";
 		};
-		DDD0E37323F0D0C200C74570 /* Networking */ = {
+		DDD0E37323F0D0C200C74570 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				DDD0E37623F0D36E00C74570 /* Networking.swift */,
+				DDD0E37623F0D36E00C74570 /* Network.swift */,
 			);
-			path = Networking;
+			path = Network;
 			sourceTree = "<group>";
 		};
 		DDD0E37C23F0D4B500C74570 /* HealthKit */ = {
@@ -200,6 +207,30 @@
 				DDD0E37D23F0D4F400C74570 /* HKViewModel.swift */,
 			);
 			path = HealthKit;
+			sourceTree = "<group>";
+		};
+		DDD0E38423F1C00600C74570 /* BusinessController */ = {
+			isa = PBXGroup;
+			children = (
+				DDD0E38523F1C02E00C74570 /* SteppyBusinessController.swift */,
+			);
+			path = BusinessController;
+			sourceTree = "<group>";
+		};
+		DDD0E38723F1E14400C74570 /* Flow */ = {
+			isa = PBXGroup;
+			children = (
+				DDD0E38823F1E15200C74570 /* Flow.swift */,
+			);
+			path = Flow;
+			sourceTree = "<group>";
+		};
+		DDD0E38A23F1EB4500C74570 /* Keychain */ = {
+			isa = PBXGroup;
+			children = (
+				DDD0E38B23F1EB8F00C74570 /* Keychain.swift */,
+			);
+			path = Keychain;
 			sourceTree = "<group>";
 		};
 		DDD0E38D23F21C6200C74570 /* Helpers */ = {
@@ -363,14 +394,18 @@
 				DDD0E37523F0D26A00C74570 /* OnboardingViewModel.swift in Sources */,
 				DD8CFAE823F05C970095E71E /* HomeViewController.swift in Sources */,
 				DDD0E36E23F0CEFA00C74570 /* HomeViewModel.swift in Sources */,
+				DDD0E38323F1BAE300C74570 /* AppRootBuilder.swift in Sources */,
 				DDD0E39723F2B7C400C74570 /* NSLayoutConstraintExtensions.swift in Sources */,
 				DDD0E37923F0D3D000C74570 /* HomeBuilder.swift in Sources */,
 				DDD0E37B23F0D43600C74570 /* OnboardingBuilder.swift in Sources */,
-				DDD0E37723F0D36E00C74570 /* Networking.swift in Sources */,
-				DDD0E37023F0CF3C00C74570 /* AppViewModel.swift in Sources */,
+				DDD0E37723F0D36E00C74570 /* Network.swift in Sources */,
+				DDD0E38923F1E15200C74570 /* Flow.swift in Sources */,
+				DDD0E38123F1983900C74570 /* OnboardingViewController.swift in Sources */,
 				DDD0E37E23F0D4F400C74570 /* HKViewModel.swift in Sources */,
+				DDD0E38623F1C02E00C74570 /* SteppyBusinessController.swift in Sources */,
 				DD8CFAE623F05C970095E71E /* AppDelegate.swift in Sources */,
 				DDD0E39923F2B7CC00C74570 /* UIViewExtensions.swift in Sources */,
+				DDD0E38C23F1EB8F00C74570 /* Keychain.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

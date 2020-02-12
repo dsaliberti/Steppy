@@ -45,8 +45,6 @@ class OnboardingViewController: UIViewController {
     }
     
     private func renderFirstSection() -> Section<SectionId, RowId> {
-        //let headerSpace = Component.EmptySpace(height: 20)
-        //let footerSpace = Component.EmptySpace(height: 20)
         let space =  Component.EmptySpace(height: 20)
 
         let username = Node(

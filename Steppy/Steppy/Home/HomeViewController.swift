@@ -1,19 +1,141 @@
 import UIKit
 import HealthKit
+import Bento
 
 class HomeViewController: UIViewController {
+    let tableView: UITableView = UITableView(frame: CGRect.zero)
     let stepsLabel: UILabel = UILabel(frame: CGRect.zero)
     let keychain: SteppyKeychain
-    init(title: String, keychain: SteppyKeychain) {
+    let homeViewModel: HomeViewModel
+    init(
+        title: String,
+        keychain: SteppyKeychain,
+        homeViewModel: HomeViewModel
+    ) {
         self.keychain = keychain
+        self.homeViewModel = homeViewModel
         super.init(nibName: nil, bundle: nil)
         view.backgroundColor = .white
         self.title = title
     }
-    
+
+    private func setupTableView() {
+        tableView.add(to: view).pinEdges(to: view.safeAreaLayoutGuide)
+        tableView.estimatedSectionFooterHeight = 18
+        tableView.estimatedSectionHeaderHeight = 18
+        tableView.sectionHeaderHeight = UITableView.automaticDimension
+        tableView.sectionFooterHeight = UITableView.automaticDimension
+        tableView.rowHeight = 100
+        tableView.estimatedRowHeight = 100
+        tableView.separatorColor = .clear
+    }
+
+    private func setupView() {
+        view.backgroundColor = .white
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupUI()
+//        setupUI()
+        
+        setupView()
+        setupTableView()
+        render()
+    }
+
+    func render(steps: String = "0") {
+        let box = Box<SectionId, RowId>.empty
+            |-+ renderFirstSection(steps: steps)
+        
+        tableView.render(box)
+    }
+
+    enum SectionId: Hashable {
+        case first
+    }
+    
+    enum RowId: Hashable {
+        case space
+        case steps
+        case healthKit
+        case generateSteps
+        case logoutButton
+    }
+
+    private func renderFirstSection(steps: String = "0") -> Section<SectionId, RowId> {
+        let space =  Component.EmptySpace(height: 20)
+        
+        let steps = Node(
+            id: RowId.steps,
+            component: Component.ImageOrLabel(
+                imageOrLabel: ImageOrLabelView.Content.text("\(steps) \nsteps"),
+                styleSheet: Component.ImageOrLabel.StyleSheet(
+                    imageOrLabel: ImageOrLabelView.StyleSheet(
+                        fixedSize: CGSize.init(width: 100, height: 50),
+                        backgroundColor: .lightGray,
+                        cornerRadius: 10.0,
+                        label: LabelStyleSheet(
+                            backgroundColor: .red,
+                            font: UIFont.systemFont(ofSize: 20, weight: .bold),
+                            textColor: .white,
+                            textAlignment: .center,
+                            numberOfLines: 2,
+                            lineBreakMode: .byClipping
+                        )
+                    )
+                )
+            )
+        )
+        
+        func logout() {
+            keychain.clearToken()
+        }
+        
+        let healthButton = Node(
+            id: RowId.healthKit,
+            component: Component.Button(
+                title: "Sync with Apple Health®",
+                isEnabled: true,
+                didTap: { [weak self] in
+                    print("tap..")
+                    self?.requestAndPresent()
+                },
+                styleSheet: Component.Button.StyleSheet(button: ButtonStyleSheet())
+            )
+        )
+
+        let generateSteps = Node(
+            id: RowId.generateSteps,
+            component: Component.Button(
+                title: "Generate steps randomly",
+                isEnabled: true,
+                didTap: { [weak self] in
+                    print("tap..")
+                    self?.writeSteps()
+                },
+                styleSheet: Component.Button.StyleSheet(button: ButtonStyleSheet())
+            )
+        )
+
+        let logoutButton = Node(
+            id: RowId.logoutButton,
+            component: Component.Button(
+                title: "Logout",
+                isEnabled: true,
+                didTap: {
+                    print("tapped ")
+                    logout()
+                },
+                styleSheet: Component.Button.StyleSheet(button: ButtonStyleSheet())
+            )
+        )
+        
+        return Section(
+            id: .first,
+            header: space,
+            footer: space,
+            items: [steps, healthButton, generateSteps, logoutButton]
+        )
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -60,6 +182,7 @@ extension HomeViewController {
                 for: Date(),
                 completion: { steps in
                     DispatchQueue.main.sync {
+                        self.render(steps: "\(Int(steps))")
                         self.stepsLabel.text = "steps 👣 \(steps.debugDescription)"
                         self.stepsLabel.sizeToFit()
                     }
@@ -119,6 +242,7 @@ extension HomeViewController {
             if bool {
                 self.getSteps(for: Date(), completion: { (steps) in
                     DispatchQueue.main.async {
+                        self.render(steps: "\(Int(steps))")
                         self.stepsLabel.text = "👣 \(steps)"
                     }
                 })
