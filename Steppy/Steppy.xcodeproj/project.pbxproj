@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DD1CBA4423F4D3BD009BFDDC /* With.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1CBA4323F4D3BD009BFDDC /* With.swift */; };
 		DD8CFAE623F05C970095E71E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8CFAE523F05C970095E71E /* AppDelegate.swift */; };
 		DD8CFAE823F05C970095E71E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8CFAE723F05C970095E71E /* HomeViewController.swift */; };
 		DD8CFAED23F05C980095E71E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD8CFAEC23F05C980095E71E /* Assets.xcassets */; };
@@ -26,6 +27,12 @@
 		DDD0E38C23F1EB8F00C74570 /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD0E38B23F1EB8F00C74570 /* Keychain.swift */; };
 		DDD0E39723F2B7C400C74570 /* NSLayoutConstraintExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD0E39623F2B7C400C74570 /* NSLayoutConstraintExtensions.swift */; };
 		DDD0E39923F2B7CC00C74570 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD0E39823F2B7CB00C74570 /* UIViewExtensions.swift */; };
+		DDD0E39B23F4AC1600C74570 /* ReactiveFeedbackExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD0E39A23F4AC1600C74570 /* ReactiveFeedbackExtensions.swift */; };
+		DDD0E39D23F4B77B00C74570 /* ReactiveSwiftExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD0E39C23F4B77B00C74570 /* ReactiveSwiftExtensions.swift */; };
+		DDD0E39F23F4B7DE00C74570 /* Functional.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD0E39E23F4B7DD00C74570 /* Functional.swift */; };
+		DDD0E3A123F4B84400C74570 /* curry.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD0E3A023F4B84400C74570 /* curry.swift */; };
+		DDD0E3A323F4B9ED00C74570 /* OptionalExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD0E3A223F4B9ED00C74570 /* OptionalExtensions.swift */; };
+		DDD0E3A523F4BEEF00C74570 /* SignalProducerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD0E3A423F4BEEF00C74570 /* SignalProducerExtensions.swift */; };
 		F9B1CBEDF2E757F111A7EAB9 /* libPods-Steppy.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7580B19F622A5C6F2FC6569A /* libPods-Steppy.a */; };
 /* End PBXBuildFile section */
 
@@ -42,6 +49,7 @@
 /* Begin PBXFileReference section */
 		5095E1FAC1A78627313E34A8 /* Pods-Steppy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Steppy.release.xcconfig"; path = "Target Support Files/Pods-Steppy/Pods-Steppy.release.xcconfig"; sourceTree = "<group>"; };
 		7580B19F622A5C6F2FC6569A /* libPods-Steppy.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Steppy.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DD1CBA4323F4D3BD009BFDDC /* With.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = With.swift; sourceTree = "<group>"; };
 		DD8CFAE223F05C970095E71E /* Steppy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Steppy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD8CFAE523F05C970095E71E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DD8CFAE723F05C970095E71E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -66,6 +74,12 @@
 		DDD0E38B23F1EB8F00C74570 /* Keychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
 		DDD0E39623F2B7C400C74570 /* NSLayoutConstraintExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSLayoutConstraintExtensions.swift; sourceTree = "<group>"; };
 		DDD0E39823F2B7CB00C74570 /* UIViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
+		DDD0E39A23F4AC1600C74570 /* ReactiveFeedbackExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactiveFeedbackExtensions.swift; sourceTree = "<group>"; };
+		DDD0E39C23F4B77B00C74570 /* ReactiveSwiftExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactiveSwiftExtensions.swift; sourceTree = "<group>"; };
+		DDD0E39E23F4B7DD00C74570 /* Functional.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Functional.swift; sourceTree = "<group>"; };
+		DDD0E3A023F4B84400C74570 /* curry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = curry.swift; sourceTree = "<group>"; };
+		DDD0E3A223F4B9ED00C74570 /* OptionalExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionalExtensions.swift; sourceTree = "<group>"; };
+		DDD0E3A423F4BEEF00C74570 /* SignalProducerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignalProducerExtensions.swift; sourceTree = "<group>"; };
 		F1339D1241F21EF3485AED50 /* Pods-Steppy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Steppy.debug.xcconfig"; path = "Target Support Files/Pods-Steppy/Pods-Steppy.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -236,8 +250,15 @@
 		DDD0E38D23F21C6200C74570 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				DDD0E39C23F4B77B00C74570 /* ReactiveSwiftExtensions.swift */,
+				DDD0E39A23F4AC1600C74570 /* ReactiveFeedbackExtensions.swift */,
 				DDD0E39823F2B7CB00C74570 /* UIViewExtensions.swift */,
 				DDD0E39623F2B7C400C74570 /* NSLayoutConstraintExtensions.swift */,
+				DDD0E39E23F4B7DD00C74570 /* Functional.swift */,
+				DDD0E3A023F4B84400C74570 /* curry.swift */,
+				DDD0E3A223F4B9ED00C74570 /* OptionalExtensions.swift */,
+				DDD0E3A423F4BEEF00C74570 /* SignalProducerExtensions.swift */,
+				DD1CBA4323F4D3BD009BFDDC /* With.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -395,12 +416,19 @@
 				DD8CFAE823F05C970095E71E /* HomeViewController.swift in Sources */,
 				DDD0E36E23F0CEFA00C74570 /* HomeViewModel.swift in Sources */,
 				DDD0E38323F1BAE300C74570 /* AppRootBuilder.swift in Sources */,
+				DDD0E3A523F4BEEF00C74570 /* SignalProducerExtensions.swift in Sources */,
+				DD1CBA4423F4D3BD009BFDDC /* With.swift in Sources */,
+				DDD0E3A123F4B84400C74570 /* curry.swift in Sources */,
 				DDD0E39723F2B7C400C74570 /* NSLayoutConstraintExtensions.swift in Sources */,
 				DDD0E37923F0D3D000C74570 /* HomeBuilder.swift in Sources */,
+				DDD0E39F23F4B7DE00C74570 /* Functional.swift in Sources */,
+				DDD0E39B23F4AC1600C74570 /* ReactiveFeedbackExtensions.swift in Sources */,
 				DDD0E37B23F0D43600C74570 /* OnboardingBuilder.swift in Sources */,
 				DDD0E37723F0D36E00C74570 /* Network.swift in Sources */,
 				DDD0E38923F1E15200C74570 /* Flow.swift in Sources */,
 				DDD0E38123F1983900C74570 /* OnboardingViewController.swift in Sources */,
+				DDD0E3A323F4B9ED00C74570 /* OptionalExtensions.swift in Sources */,
+				DDD0E39D23F4B77B00C74570 /* ReactiveSwiftExtensions.swift in Sources */,
 				DDD0E37E23F0D4F400C74570 /* HKViewModel.swift in Sources */,
 				DDD0E38623F1C02E00C74570 /* SteppyBusinessController.swift in Sources */,
 				DD8CFAE623F05C970095E71E /* AppDelegate.swift in Sources */,

@@ -4,7 +4,7 @@ import ReactiveCocoa
 
 struct AppRootBuilder {
     let keychain: SteppyKeychain
-    let businessController = SteppyBusinessController(network: Network())
+    let businessController: BusinessControllerProtocol = SteppyBusinessController(network: Network())
     let window: UIWindow
     let navigationController = SteppyNavigationController()
 
@@ -37,7 +37,12 @@ struct AppRootBuilder {
     }
 
     func makeOnboarding() -> UIViewController {
-        return OnboardingViewController(title: "Sign Up", keychain: keychain)
+        let viewModel = OnboardingViewModel(businessController: businessController, keychain: keychain)
+        
+        return OnboardingViewController(
+            title: "Sign Up",
+            viewModel: viewModel
+        )
     }
 }
 
