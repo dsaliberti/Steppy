@@ -10,7 +10,7 @@ protocol BusinessControllerProtocol {
 }
 
 public final class SteppyBusinessController: BusinessControllerProtocol {
-    let baseURLString = "https://www.google.com"
+    let baseURLString = "https://private-c594e6-steppy1.apiary-mock.com"
     let network: Connectable
 
     public init(network: Connectable) {
@@ -66,6 +66,8 @@ extension SteppyBusinessController {
         timeout: TimeInterval
     ) -> URLRequest {
         var request = URLRequest(url: url, cachePolicy: .reloadIgnoringCacheData, timeoutInterval: timeout)
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
         request.httpMethod = method.uppercased()
         request.httpBody = try? JSONSerialization.data(withJSONObject: body)
         if let token = token {

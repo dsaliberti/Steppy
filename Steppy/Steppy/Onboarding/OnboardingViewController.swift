@@ -3,11 +3,10 @@ import Bento
 import ReactiveSwift
 
 class OnboardingViewController: UIViewController {
-    let tableView: UITableView = UITableView(frame: CGRect.zero)
-    let viewModel: OnboardingViewModel
+    private let tableView: UITableView = UITableView(frame: CGRect.zero)
+    private let viewModel: OnboardingViewModel
     init(title: String, viewModel: OnboardingViewModel) {
         self.viewModel = viewModel
-        //self.keychain = viewModel.keychain
         super.init(nibName: nil, bundle: nil)
         self.title = title
     }
@@ -44,8 +43,6 @@ extension OnboardingViewController {
             .take(duringLifetimeOf: self)
             .startWithValues { [weak self] state in
                 guard let self = self else { return }
-
-                print("bindVM: state values", state)
 
                 self.tableView.render(self.viewModel.render(state: state))
             }

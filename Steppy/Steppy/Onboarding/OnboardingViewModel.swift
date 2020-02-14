@@ -155,23 +155,23 @@ struct OnboardingViewModel {
     
     enum State {
         case idle(Context)
-        case loading
+        case loading(Context)
         case succeeded
         case failed
         
-        var context: Context? {
+        var context: Context {
             switch self {
             case let .idle(context):
                 return context
             default:
-                return nil
+                return Context()
             }
         }
     }
     
     struct Context: With {
-        var username: String
-        var password: String
+        var username: String = ""
+        var password: String = ""
     }
     
     enum Event {
@@ -194,25 +194,19 @@ struct OnboardingViewModel {
 //MARK - Feedback system
 extension OnboardingViewModel {
     func send(action: OnboardingViewModel.Action) {
-        input.observer(Event.ui(action))
+        input.observer(.ui(action))
     }
     
     private static func reduce(_ state: State, _ event: Event) -> State {
         switch event {
         case let .ui(.didChangePassword(password)):
-            state.context?.with { $0.password = password }
-            return state
+            return .idle(state.context.with(set(\.password, password)))
         case let .ui(.didChangeUsername(username)):
-            state.context?.with({ (context) in
-                print("username", context.username)
-                context.username = username
-            })
-            print("reduce didChangeUsername", state)
-            return state
+            return .idle(state.context.with(set(\.username, username)))
         case .ui(.userDidTapSend):
-            return .loading
+            return .loading(state.context)
         case .didFail, .didSucceed:
-            return .idle(Context(username: "", password: ""))
+            return .idle(.init())
         }
     }
 }
@@ -224,7 +218,20 @@ extension OnboardingViewModel {
     ) -> Feedback<State, Event> {
         return Feedback { state -> SignalProducer<Event, Never> in
             guard case .loading = state else { return .empty }
+            
+            //TODO maybe validation errors could be treated here
 
+            businessController.createNewSession(
+                email: state.context.username,
+                password: state.context.password,
+                completion: { (data, response, error) in
+                //TODO: parse response (in the BC) and receive here the custom model
+                // with the token to save into the keychain
+                    DispatchQueue.main.async {
+                        keychain.setToken("token-here")
+                    }
+                }
+            )
             return SignalProducer(value: .didSucceed)
         }
     }

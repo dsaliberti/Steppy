@@ -9,7 +9,9 @@ public protocol Connectable {
 public final class Network: Connectable {
     public let timeoutForRequest = 30.0
     public func request(_ request: URLRequest, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
-        let session = URLSession(configuration: URLSessionConfiguration())
-        session.dataTask(with: request, completionHandler: completion)
+        URLSession.shared.dataTask(
+            with: request,
+            completionHandler: completion
+        ).resume()
     }
 }
