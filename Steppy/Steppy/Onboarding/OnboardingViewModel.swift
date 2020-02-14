@@ -4,15 +4,15 @@ import Bento
 
 struct OnboardingViewModel {
     let state: Property<State>
-    let routes: Signal<Route, Never>
-    let box = Box<SectionId, RowId>.empty
+    //let routes: Signal<Route, Never>
+    private let box = Box<SectionId, RowId>.empty
     private let input = Feedback<State, Event>.input()
     private let keychain: SteppyKeychain
     init(
         scheduler: DateScheduler = QueueScheduler.main,
         businessController: BusinessControllerProtocol,
         keychain: SteppyKeychain
-        ) {
+    ) {
         self.keychain = keychain
         
         state = Property<OnboardingViewModel.State>(
@@ -28,13 +28,13 @@ struct OnboardingViewModel {
             ]
         )
         
-        routes = state.signal.compactMap { state -> Route? in
-            switch state {
-            case .succeeded:
-                return .authenticated
-            default: return nil
-            }
-        }
+//        routes = state.signal.compactMap { state -> Route? in
+//            switch state {
+//            case .succeeded:
+//                return .authenticated
+//            default: return nil
+//            }
+//        }
     }
     
     //MARK - Renderer
@@ -196,7 +196,7 @@ extension OnboardingViewModel {
     func send(action: OnboardingViewModel.Action) {
         input.observer(.ui(action))
     }
-    
+
     private static func reduce(_ state: State, _ event: Event) -> State {
         switch event {
         case let .ui(.didChangePassword(password)):
@@ -218,7 +218,7 @@ extension OnboardingViewModel {
     ) -> Feedback<State, Event> {
         return Feedback { state -> SignalProducer<Event, Never> in
             guard case .loading = state else { return .empty }
-            
+
             //TODO maybe validation errors could be treated here
 
             businessController.createNewSession(

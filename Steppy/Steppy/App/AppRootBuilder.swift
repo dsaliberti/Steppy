@@ -28,11 +28,10 @@ struct AppRootBuilder {
     }
 
     func makeHome(apiToken: String) -> UIViewController {
-        let homeViewModel = HomeViewModel(businessController: businessController, apiToken: apiToken)
+        let homeViewModel = HomeViewModel(businessController: businessController, apiToken: apiToken, keychain: keychain)
         return HomeViewController(
             title: "Steppy",
-            keychain: keychain,
-            homeViewModel: homeViewModel
+            viewModel: homeViewModel
         )
     }
 

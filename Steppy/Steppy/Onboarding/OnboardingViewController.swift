@@ -2,7 +2,7 @@ import UIKit
 import Bento
 import ReactiveSwift
 
-class OnboardingViewController: UIViewController {
+final class OnboardingViewController: UIViewController {
     private let tableView: UITableView = UITableView(frame: CGRect.zero)
     private let viewModel: OnboardingViewModel
     init(title: String, viewModel: OnboardingViewModel) {
