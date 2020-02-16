@@ -22,15 +22,15 @@ struct AppRootBuilder {
         switch state {
         case .unauthenticated:
             navigationController.navigationFlow.replace(with: makeOnboarding(), animated: false)
-        case let .authenticated(apiToken: token):
-            navigationController.navigationFlow.replace(with: makeHome(apiToken: token), animated: false)
+        case let .authenticated(apiToken: token, userId: userId):
+            navigationController.navigationFlow.replace(with: makeHome(apiToken: token, userId: userId), animated: false)
         }
     }
 
-    func makeHome(apiToken: String) -> UIViewController {
+    func makeHome(apiToken: String, userId: String) -> UIViewController {
         let homeViewModel = HomeViewModel(
             businessController: businessController,
-            apiToken: apiToken,
+            apiToken: apiToken, userId: userId,
             keychain: keychain,
             healthKit: healthKit
         )

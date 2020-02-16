@@ -14,6 +14,7 @@ struct HomeViewModel {
         scheduler: DateScheduler = QueueScheduler.main,
         businessController: BusinessControllerProtocol,
         apiToken: String,
+        userId: String,
         keychain: SteppyKeychain,
         healthKit: HealthKit
     ) {
@@ -29,6 +30,7 @@ struct HomeViewModel {
                 HomeViewModel.whenFetchingStepsData(
                     businessController: businessController,
                     apiToken: apiToken,
+                    userId: userId,
                     healthKit: healthKit
                 ),
                 HomeViewModel.whenLogingOut(
@@ -48,16 +50,17 @@ struct HomeViewModel {
 //            }
 //        }
 
-//MARK - ViewLifeCycle
+    //MARK - ViewLifeCycle
     func viewDidLoad() {
         input.observer(.viewDidLoad)
     }
 
+    //MARK - AppLifeCycle
     func appBecomeActive() {
         input.observer(.appBecomeActive)
     }
     
-//MARK - Renderer
+    //MARK - Renderer
     public func render(state: State) -> Box<SectionId, RowId> {
         print("render state", state)
         
@@ -258,7 +261,6 @@ struct HomeViewModel {
 
     struct Context: With {
         var healthKitAuthorizationStatus: HKStepsAuthorizationStatus = .unknown
-        var userId: String = "1" //this should be injected from /session response
         var steps: String = "0"
         //apiDataUpToDate
         //hkDataUpToDate
@@ -353,15 +355,16 @@ extension HomeViewModel {
     private static func whenFetchingStepsData(
         businessController: BusinessControllerProtocol,
         apiToken: String,
+        userId: String,
         healthKit: HealthKit
     ) -> Feedback<State, Event> {
         return Feedback { state -> SignalProducer<Event, Never> in
-            guard case let .fetchingStepsData(context) = state else { return .empty }
+            guard case .fetchingStepsData = state else { return .empty }
 
             let healthKitSteps = healthKit.readSteps(for: Date())
             
             let userSteps = businessController.user(
-                with: context.userId,
+                with: userId,
                 apiToken: apiToken
             ).map(\.stepCount)
 
@@ -380,8 +383,9 @@ extension HomeViewModel {
         return Feedback { state -> SignalProducer<Event, Never> in
             guard case .logOut = state else { return .empty }
 
+            //TODO: check if dispatch is needed
             DispatchQueue.main.async {
-                keychain.clearToken()
+                keychain.clearSession()
             }
 
             return SignalProducer(value: .userDidLogout)

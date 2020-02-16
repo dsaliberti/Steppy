@@ -16,7 +16,7 @@ struct OnboardingViewModel {
         self.keychain = keychain
         
         state = Property<OnboardingViewModel.State>(
-            initial: .idle(.init(username: "", password: "")),
+            initial: .idle(.init(email: "", password: "")),
             scheduler: scheduler,
             reduce: OnboardingViewModel.reduce,
             feedbacks: [
@@ -96,7 +96,7 @@ struct OnboardingViewModel {
             component: Component.TextInput(
                 title: "e-mail: ",
                 placeholder: "e-mail or username here",
-                text: TextValue(stringLiteral: context?.username ?? ""),
+                text: TextValue(stringLiteral: context?.email ?? ""),
                 keyboardType: .emailAddress,
                 isEnabled: true,
                 textWillChange: nil,
@@ -170,7 +170,7 @@ struct OnboardingViewModel {
     }
     
     struct Context: With {
-        var username: String = ""
+        var email: String = ""
         var password: String = ""
     }
     
@@ -202,7 +202,7 @@ extension OnboardingViewModel {
         case let .ui(.didChangePassword(password)):
             return .idle(state.context.with(set(\.password, password)))
         case let .ui(.didChangeUsername(username)):
-            return .idle(state.context.with(set(\.username, username)))
+            return .idle(state.context.with(set(\.email, username)))
         case .ui(.userDidTapSend):
             return .loading(state.context)
         case .didFail, .didSucceed:
@@ -219,20 +219,14 @@ extension OnboardingViewModel {
         return Feedback { state -> SignalProducer<Event, Never> in
             guard case .loading = state else { return .empty }
 
-            //TODO maybe validation errors could be treated here
-
-            businessController.createNewSession(
-                email: state.context.username,
-                password: state.context.password,
-                completion: { (data, response, error) in
-                //TODO: parse response (in the BC) and receive here the custom model
-                // with the token to save into the keychain
-                    DispatchQueue.main.async {
-                        keychain.setToken("token-here")
-                    }
-                }
-            )
-            return SignalProducer(value: .didSucceed)
+            return businessController
+                .createNewSession(
+                    email: state.context.email,
+                    password: state.context.password
+                )
+                .ignoreError()
+                .injectSideEffect(keychain.setSession)
+                .map(value: Event.didSucceed)
         }
     }
 }
