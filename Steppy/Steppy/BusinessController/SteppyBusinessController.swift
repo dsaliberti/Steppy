@@ -2,21 +2,7 @@ import Foundation
 import ReactiveSwift
 
 protocol BusinessControllerProtocol {
-    var network: Connectable { get }
-    func createNewSession(
-        email: String,
-        password: String,
-        completion: @escaping (Data?, URLResponse?, Error?) -> Void
-    )
-
     func createNewSession(email: String, password: String) -> SignalProducer<Session, Error>
-
-    func user(
-        with id: String,
-        apiToken: String,
-        completion: @escaping (Data?, URLResponse?, Error?) -> Void
-    )
-
     func user(with id: String, apiToken: String) -> SignalProducer<User, Error>
 }
 
@@ -122,6 +108,7 @@ public final class SteppyBusinessController: BusinessControllerProtocol {
     //TODO: - refactor and extract to its own file
     public func parse<T>(_ data: Data) -> Result<T, Error> where T: Decodable {
         return Result<T, Error> { try JSONDecoder().decode(T.self, from: data) }
+            //.mapError { .parser(String(describing: $0.localizedDescription)) }
     }
 }
 
@@ -147,31 +134,35 @@ extension SteppyBusinessController {
 }
 
 //TODO: - extract to its own file
-public struct User: Decodable {
+public struct User {
     let email: String
     let stepCount: Double
+}
 
-    enum CodingKeys: String, CodingKey {
-        case email
-        case stepCount = "step_count"
-    }
-
+extension User: Decodable {
     public init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         email = try values.decode(String.self, forKey: .email)
         stepCount = try values.decode(Double.self, forKey: .stepCount)
     }
+
+    enum CodingKeys: String, CodingKey {
+        case email
+        case stepCount = "step_count"
+    }
 }
 
-public struct Session: Decodable {
+public struct Session {
     let apiToken: String
     let userId: String
-    
+}
+
+extension Session: Decodable {
     enum CodingKeys: String, CodingKey {
         case apiToken = "token"
         case userId = "user_id"
     }
-    
+
     public init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         apiToken = try values.decode(String.self, forKey: .apiToken)

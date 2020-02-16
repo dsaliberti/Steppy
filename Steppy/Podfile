@@ -1,8 +1,23 @@
 platform :ios, '12.4'
-target 'Steppy'
-pod 'KeychainAccess'
-pod 'ReactiveSwift', '~> 6.0'
-pod 'ReactiveFeedback', '~> 0.7'
-pod 'ReactiveCocoa', '~> 10.0'
-pod 'Bento'
+
+def shared_pods
+  pod 'ReactiveSwift', '~> 6.0'
+  pod 'ReactiveFeedback', '~> 0.7'
+  pod 'ReactiveCocoa', '~> 10.0'
+  pod 'KeychainAccess'
+  pod 'Bento'
+end
+
+target 'Steppy' do
+  project 'Steppy.xcodeproj'
+  
+  shared_pods
+end
+
+target 'SteppyTests' do
+  project 'Steppy.xcodeproj'
+  shared_pods
+  pod 'Nimble'
+end
+
 inhibit_all_warnings!

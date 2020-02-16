@@ -2,16 +2,16 @@ import ReactiveSwift
 import ReactiveFeedback
 import Bento
 
-struct OnboardingViewModel {
+final class OnboardingViewModel: ViewModelProtocol {
     let state: Property<State>
     //let routes: Signal<Route, Never>
     private let box = Box<SectionId, RowId>.empty
     private let input = Feedback<State, Event>.input()
-    private let keychain: SteppyKeychain
+    private let keychain: KeychainProtocol
     init(
         scheduler: DateScheduler = QueueScheduler.main,
         businessController: BusinessControllerProtocol,
-        keychain: SteppyKeychain
+        keychain: KeychainProtocol
     ) {
         self.keychain = keychain
         
@@ -214,7 +214,7 @@ extension OnboardingViewModel {
 extension OnboardingViewModel {
     private static func whenSigningIn(
         businessController: BusinessControllerProtocol,
-        keychain: SteppyKeychain
+        keychain: KeychainProtocol
     ) -> Feedback<State, Event> {
         return Feedback { state -> SignalProducer<Event, Never> in
             guard case .loading = state else { return .empty }

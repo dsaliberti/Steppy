@@ -1,15 +1,24 @@
 import KeychainAccess
 
-class SteppyKeychain {
-    let keychain = Keychain(service: "com.dsaliberti.steppy")
+protocol KeychainProtocol {
+    func clearSession()
+    func setSession(_ session: Session)
+    var didChangeCompletion: (AuthenticationState) -> Void { get set }
+    func getUserId() -> String?
+    func getToken() -> String?
+    func checkState()
+}
+
+enum AuthenticationState {
+    case authenticated(apiToken: String, userId: String)
+    case unauthenticated
+}
+
+class SteppyKeychain: KeychainProtocol {
+    private let keychain = Keychain(service: "com.dsaliberti.steppy")
     private let apiTokenKey = "apiToken"
     private let userIdKey = "userId"
 
-    enum AuthenticationState {
-        case authenticated(apiToken: String, userId: String)
-        case unauthenticated
-    }
-    
     var didChangeCompletion: (AuthenticationState) -> Void = {_ in }
 
     func getUserId() -> String? {

@@ -3,13 +3,7 @@ import ReactiveSwift
 
 protocol HealthKit {
     func checkAuthorizationStatus() -> HKStepsAuthorizationStatus
-    
-    func requestAuthorization(completion: @escaping (HKStepsAuthorizationStatus, Error?) -> Void)
     func requestAuthorization() -> SignalProducer<HKStepsAuthorizationStatus, Error>
-
-    func readSteps(for date: Date,_ completion: @escaping (Double) -> Void)
-    func writeAndRead(steps: Int, date: Date,_ completion: @escaping (Double) -> Void)
-
     func readSteps(for date: Date) -> SignalProducer<Double, Error>
     func writeAndRead(steps: Int, date: Date) -> SignalProducer<Double, Error>
 }

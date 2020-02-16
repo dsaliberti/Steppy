@@ -3,7 +3,7 @@ import ReactiveSwift
 import ReactiveCocoa
 
 struct AppRootBuilder {
-    let keychain: SteppyKeychain
+    var keychain: KeychainProtocol
     let businessController: BusinessControllerProtocol = SteppyBusinessController(network: Network())
     let window: UIWindow
     let navigationController = SteppyNavigationController()
@@ -18,7 +18,7 @@ struct AppRootBuilder {
         keychain.checkState()
     }
 
-    func makeAppRoot(state: SteppyKeychain.AuthenticationState) {
+    func makeAppRoot(state: AuthenticationState) {
         switch state {
         case .unauthenticated:
             navigationController.navigationFlow.replace(with: makeOnboarding(), animated: false)

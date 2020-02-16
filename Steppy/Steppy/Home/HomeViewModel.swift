@@ -2,12 +2,12 @@ import ReactiveSwift
 import ReactiveFeedback
 import Bento
 
-struct HomeViewModel {
+final class HomeViewModel: ViewModelProtocol {
     let state: Property<State>
     //let routes: Signal<Route, Never>
     private let box = Box<SectionId, RowId>.empty
     private let input = Feedback<State, Event>.input()
-    private let keychain: SteppyKeychain
+    private let keychain: KeychainProtocol
     private let healthKit: HealthKit
     let space =  Component.EmptySpace(height: 20, styleSheet: ViewStyleSheet<UIView>(backgroundColor: .lightGray))
     init(
@@ -15,7 +15,7 @@ struct HomeViewModel {
         businessController: BusinessControllerProtocol,
         apiToken: String,
         userId: String,
-        keychain: SteppyKeychain,
+        keychain: KeychainProtocol,
         healthKit: HealthKit
     ) {
         self.keychain = keychain
@@ -262,9 +262,6 @@ struct HomeViewModel {
     struct Context: With {
         var healthKitAuthorizationStatus: HKStepsAuthorizationStatus = .unknown
         var steps: String = "0"
-        //apiDataUpToDate
-        //hkDataUpToDate
-        var stepsToSync: Int = 0
     }
 
     enum Event {
@@ -317,7 +314,7 @@ extension HomeViewModel {
             return .logOut
 
         case .userDidLogout:
-            return state
+            return .idle(.init())
         }
     }
 
@@ -378,16 +375,11 @@ extension HomeViewModel {
     
     private static func whenLogingOut(
         businessController: BusinessControllerProtocol,
-        keychain: SteppyKeychain
+        keychain: KeychainProtocol
     ) -> Feedback<State, Event> {
         return Feedback { state -> SignalProducer<Event, Never> in
             guard case .logOut = state else { return .empty }
-
-            //TODO: check if dispatch is needed
-            DispatchQueue.main.async {
-                keychain.clearSession()
-            }
-
+            keychain.clearSession()
             return SignalProducer(value: .userDidLogout)
         }
     }

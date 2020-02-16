@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		355E0C070A5872A9E86451ED /* libPods-SteppyTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E888EF6701F7EF726CA1EAF4 /* libPods-SteppyTests.a */; };
 		DD1CBA4423F4D3BD009BFDDC /* With.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1CBA4323F4D3BD009BFDDC /* With.swift */; };
 		DD8CFAE623F05C970095E71E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8CFAE523F05C970095E71E /* AppDelegate.swift */; };
 		DD8CFAE823F05C970095E71E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8CFAE723F05C970095E71E /* HomeViewController.swift */; };
@@ -14,6 +15,7 @@
 		DD8CFAF023F05C980095E71E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD8CFAEE23F05C980095E71E /* LaunchScreen.storyboard */; };
 		DD8CFAFB23F05C990095E71E /* SteppyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8CFAFA23F05C990095E71E /* SteppyTests.swift */; };
 		DD8CFB0823F06AEE0095E71E /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD8CFB0723F06AEE0095E71E /* HealthKit.framework */; };
+		DDCDB2B023F99AC000C91FD9 /* ViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCDB2AF23F99AC000C91FD9 /* ViewModelProtocol.swift */; };
 		DDD0E36E23F0CEFA00C74570 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD0E36D23F0CEFA00C74570 /* HomeViewModel.swift */; };
 		DDD0E37523F0D26A00C74570 /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD0E37423F0D26A00C74570 /* OnboardingViewModel.swift */; };
 		DDD0E37723F0D36E00C74570 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD0E37623F0D36E00C74570 /* Network.swift */; };
@@ -49,6 +51,7 @@
 /* Begin PBXFileReference section */
 		5095E1FAC1A78627313E34A8 /* Pods-Steppy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Steppy.release.xcconfig"; path = "Target Support Files/Pods-Steppy/Pods-Steppy.release.xcconfig"; sourceTree = "<group>"; };
 		7580B19F622A5C6F2FC6569A /* libPods-Steppy.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Steppy.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		84D9283AD8E5619CA5F75A52 /* Pods-SteppyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SteppyTests.debug.xcconfig"; path = "Target Support Files/Pods-SteppyTests/Pods-SteppyTests.debug.xcconfig"; sourceTree = "<group>"; };
 		DD1CBA4323F4D3BD009BFDDC /* With.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = With.swift; sourceTree = "<group>"; };
 		DD8CFAE223F05C970095E71E /* Steppy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Steppy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD8CFAE523F05C970095E71E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -61,6 +64,7 @@
 		DD8CFAFC23F05C990095E71E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DD8CFB0723F06AEE0095E71E /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		DD8CFB0923F06AEE0095E71E /* Steppy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Steppy.entitlements; sourceTree = "<group>"; };
+		DDCDB2AF23F99AC000C91FD9 /* ViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelProtocol.swift; sourceTree = "<group>"; };
 		DDD0E36D23F0CEFA00C74570 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		DDD0E37423F0D26A00C74570 /* OnboardingViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
 		DDD0E37623F0D36E00C74570 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
@@ -80,6 +84,8 @@
 		DDD0E3A023F4B84400C74570 /* curry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = curry.swift; sourceTree = "<group>"; };
 		DDD0E3A223F4B9ED00C74570 /* OptionalExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionalExtensions.swift; sourceTree = "<group>"; };
 		DDD0E3A423F4BEEF00C74570 /* SignalProducerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignalProducerExtensions.swift; sourceTree = "<group>"; };
+		E0301A735BFFCA7D097FA67C /* Pods-SteppyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SteppyTests.release.xcconfig"; path = "Target Support Files/Pods-SteppyTests/Pods-SteppyTests.release.xcconfig"; sourceTree = "<group>"; };
+		E888EF6701F7EF726CA1EAF4 /* libPods-SteppyTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SteppyTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1339D1241F21EF3485AED50 /* Pods-Steppy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Steppy.debug.xcconfig"; path = "Target Support Files/Pods-Steppy/Pods-Steppy.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -97,6 +103,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				355E0C070A5872A9E86451ED /* libPods-SteppyTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -108,6 +115,8 @@
 			children = (
 				F1339D1241F21EF3485AED50 /* Pods-Steppy.debug.xcconfig */,
 				5095E1FAC1A78627313E34A8 /* Pods-Steppy.release.xcconfig */,
+				84D9283AD8E5619CA5F75A52 /* Pods-SteppyTests.debug.xcconfig */,
+				E0301A735BFFCA7D097FA67C /* Pods-SteppyTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -145,6 +154,7 @@
 				DDD0E38723F1E14400C74570 /* Flow */,
 				DDD0E38D23F21C6200C74570 /* Helpers */,
 				DD8CFB0523F060190095E71E /* Support Files */,
+				DDCDB2AF23F99AC000C91FD9 /* ViewModelProtocol.swift */,
 			);
 			path = Steppy;
 			sourceTree = "<group>";
@@ -174,6 +184,7 @@
 			children = (
 				DD8CFB0723F06AEE0095E71E /* HealthKit.framework */,
 				7580B19F622A5C6F2FC6569A /* libPods-Steppy.a */,
+				E888EF6701F7EF726CA1EAF4 /* libPods-SteppyTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -289,9 +300,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DD8CFB0223F05C990095E71E /* Build configuration list for PBXNativeTarget "SteppyTests" */;
 			buildPhases = (
+				0FA30EEB680CC5F4715CC473 /* [CP] Check Pods Manifest.lock */,
 				DD8CFAF223F05C990095E71E /* Sources */,
 				DD8CFAF323F05C990095E71E /* Frameworks */,
 				DD8CFAF423F05C990095E71E /* Resources */,
+				3592AA430D4BE69A9362AA59 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -366,6 +379,45 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		0FA30EEB680CC5F4715CC473 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SteppyTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3592AA430D4BE69A9362AA59 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SteppyTests/Pods-SteppyTests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SteppyTests/Pods-SteppyTests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SteppyTests/Pods-SteppyTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		E4D39A0F0F8CC7041E5D4B4E /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -416,6 +468,7 @@
 				DD8CFAE823F05C970095E71E /* HomeViewController.swift in Sources */,
 				DDD0E36E23F0CEFA00C74570 /* HomeViewModel.swift in Sources */,
 				DDD0E38323F1BAE300C74570 /* AppRootBuilder.swift in Sources */,
+				DDCDB2B023F99AC000C91FD9 /* ViewModelProtocol.swift in Sources */,
 				DDD0E3A523F4BEEF00C74570 /* SignalProducerExtensions.swift in Sources */,
 				DD1CBA4423F4D3BD009BFDDC /* With.swift in Sources */,
 				DDD0E3A123F4B84400C74570 /* curry.swift in Sources */,
@@ -625,6 +678,7 @@
 		};
 		DD8CFB0323F05C990095E71E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 84D9283AD8E5619CA5F75A52 /* Pods-SteppyTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -646,6 +700,7 @@
 		};
 		DD8CFB0423F05C990095E71E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E0301A735BFFCA7D097FA67C /* Pods-SteppyTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
