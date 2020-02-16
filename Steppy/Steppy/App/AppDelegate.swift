@@ -10,13 +10,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
-    func applicationWillResignActive(_ application: UIApplication) { }
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        guard let rootViewController = window?.rootViewController as? SteppyNavigationController,
+            let activeHomeViewController = rootViewController.viewControllers.first as? HomeViewController else { return }
 
-    func applicationDidEnterBackground(_ application: UIApplication) { }
-
-    func applicationWillEnterForeground(_ application: UIApplication) { }
-
-    func applicationDidBecomeActive(_ application: UIApplication) { }
+        activeHomeViewController.appBecomeActive()
+    }
 
     func applicationWillTerminate(_ application: UIApplication) { }
 }

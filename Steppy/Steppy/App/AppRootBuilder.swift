@@ -7,7 +7,7 @@ struct AppRootBuilder {
     let businessController: BusinessControllerProtocol = SteppyBusinessController(network: Network())
     let window: UIWindow
     let navigationController = SteppyNavigationController()
-
+    let healthKit: HealthKit = HKViewModel()
     init() {
         window = UIWindow.init(frame: UIScreen.main.bounds)
         window.makeKeyAndVisible()
@@ -28,7 +28,12 @@ struct AppRootBuilder {
     }
 
     func makeHome(apiToken: String) -> UIViewController {
-        let homeViewModel = HomeViewModel(businessController: businessController, apiToken: apiToken, keychain: keychain)
+        let homeViewModel = HomeViewModel(
+            businessController: businessController,
+            apiToken: apiToken,
+            keychain: keychain,
+            healthKit: healthKit
+        )
         return HomeViewController(
             title: "Steppy",
             viewModel: homeViewModel
@@ -45,7 +50,7 @@ struct AppRootBuilder {
     }
 }
 
-class SteppyNavigationController: UINavigationController {
+final class SteppyNavigationController: UINavigationController {
     init() {
         super.init(nibName: nil, bundle: nil)
         navigationBar.isTranslucent = false

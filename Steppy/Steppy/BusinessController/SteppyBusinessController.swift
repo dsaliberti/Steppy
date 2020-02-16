@@ -1,4 +1,5 @@
 import Foundation
+import ReactiveSwift
 
 protocol BusinessControllerProtocol {
     var network: Connectable { get }
@@ -7,6 +8,14 @@ protocol BusinessControllerProtocol {
         password: String,
         completion: @escaping (Data?, URLResponse?, Error?) -> Void
     )
+
+    func user(
+        with id: String,
+        apiToken: String,
+        completion: @escaping (Data?, URLResponse?, Error?) -> Void
+    )
+
+    func user(with id: String, apiToken: String) -> SignalProducer<User, Error>
 }
 
 public final class SteppyBusinessController: BusinessControllerProtocol {
@@ -52,8 +61,35 @@ public final class SteppyBusinessController: BusinessControllerProtocol {
             method: method,
             timeout: network.timeoutForRequest
         )
-        
+
         network.request(request, completion: completion)
+    }
+
+    public func user(with id: String, apiToken: String) -> SignalProducer<User, Error> {
+        return SignalProducer { (observer, _) in
+            self.user(with: id, apiToken: apiToken, completion: { (data, response, error) in
+                if let error = error {
+                    observer.send(error: error)
+                }
+
+                guard let data = data else {
+                    return
+                }
+
+                let result: Result<User, Error> = self.parse(data)
+
+                switch result {
+                case let .success(user):
+                    observer.send(value: user)
+                case let .failure(parseError):
+                    observer.send(error: parseError)
+                }
+            })
+        }
+    }
+
+    public func parse<T>(_ data: Data) -> Result<T, Error> where T: Decodable {
+        return Result<T, Error> { try JSONDecoder().decode(T.self, from: data) }
     }
 }
 
@@ -75,5 +111,21 @@ extension SteppyBusinessController {
         }
 
         return request
+    }
+}
+
+public struct User: Decodable {
+    let email: String
+    let stepCount: Double
+
+    enum CodingKeys: String, CodingKey {
+        case email
+        case stepCount = "step_count"
+    }
+
+    public init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        email = try values.decode(String.self, forKey: .email)
+        stepCount = try values.decode(Double.self, forKey: .stepCount)
     }
 }

@@ -2,7 +2,7 @@ import KeychainAccess
 
 class SteppyKeychain {
     let keychain = Keychain(service: "com.dsaliberti.steppy")
-    let apiTokenKey = "apiToken"
+    private let apiTokenKey = "apiToken"
 
     enum AuthenticationState {
         case authenticated(apiToken: String)

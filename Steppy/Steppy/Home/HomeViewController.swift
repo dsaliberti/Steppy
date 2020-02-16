@@ -17,6 +17,12 @@ final class HomeViewController: UIViewController {
         setupView()
         setupTableView()
         bindViewModel()
+
+        viewModel.viewDidLoad()
+    }
+
+    func appBecomeActive() {
+        viewModel.appBecomeActive()
     }
     
     private func setupTableView() {
@@ -25,8 +31,7 @@ final class HomeViewController: UIViewController {
         tableView.estimatedSectionHeaderHeight = 18
         tableView.sectionHeaderHeight = UITableView.automaticDimension
         tableView.sectionFooterHeight = UITableView.automaticDimension
-        tableView.rowHeight = 100
-        tableView.estimatedRowHeight = 100
+        tableView.rowHeight = 80
         tableView.separatorColor = .clear
     }
 
@@ -55,15 +60,6 @@ extension HomeViewController {
 extension HomeViewController {
     func requestAndPresent() {
         print("request..")
-//        requestAuthorization { (isGranted, error) in
-//            print("Health data ❤️: isGranted", isGranted, "error", error.debugDescription)
-//            
-////            self.getSteps(
-////                for: Date(),
-////                completion: { steps in
-////
-////                }
-////            )
-//        }
+
     }
 }
