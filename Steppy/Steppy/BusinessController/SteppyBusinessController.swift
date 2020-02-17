@@ -4,6 +4,7 @@ import ReactiveSwift
 protocol BusinessControllerProtocol {
     func createNewSession(email: String, password: String) -> SignalProducer<Session, Error>
     func user(with id: String, apiToken: String) -> SignalProducer<User, Error>
+    func post(steps: Int, apiToken: String, userId: String) -> SignalProducer<User, Error>
 }
 
 public final class SteppyBusinessController: BusinessControllerProtocol {
@@ -14,6 +15,7 @@ public final class SteppyBusinessController: BusinessControllerProtocol {
         self.network = network
     }
 
+    //MARK: - Session
     public func createNewSession(
         email: String,
         password: String,
@@ -88,13 +90,11 @@ public final class SteppyBusinessController: BusinessControllerProtocol {
                 if let error = error {
                     observer.send(error: error)
                 }
-
-                guard let data = data else {
-                    return
-                }
-
+                
+                guard let data = data else { return }
 
                 let result: Result<User, Error> = Parser.parse(data)
+
                 switch result {
                 case let .success(user):
                     observer.send(value: user)
@@ -105,6 +105,49 @@ public final class SteppyBusinessController: BusinessControllerProtocol {
         }
     }
 
+    func post(steps: Int, apiToken: String, userId: String) -> SignalProducer<User, Error> {
+        
+        return SignalProducer { (observer, _) in
+            self.post(
+            steps: steps,
+            apiToken: apiToken,
+            userId: userId
+        ) { (data, response, error) in
+                if let error = error {
+                    observer.send(error: error)
+                }
+
+                guard let data = data else { return }
+                let result: Result<User, Error> = Parser.parse(data)
+                
+                switch result {
+                case let .success(user):
+                    observer.send(value: user)
+                case let .failure(parseError):
+                    observer.send(error: parseError)
+                }
+            }
+        }
+    }
+
+    func post(
+        steps: Int,
+        apiToken: String,
+        userId: String,
+        completion: @escaping (Data?, URLResponse?, Error?) -> Void
+    ) {
+        let url = URL(string: "\(baseURLString)/users/\(userId)/steps")!
+        let method = "post"
+
+        let request = SteppyBusinessController.makeURLRequest(
+            url: url,
+            token: apiToken,
+            body: ["step_count": "\(steps)"],
+            method: method,
+            timeout: network.timeoutForRequest
+        )
+        
+        network.request(request, completion: completion)
     }
 }
 

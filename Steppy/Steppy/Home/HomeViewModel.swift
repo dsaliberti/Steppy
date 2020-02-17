@@ -8,7 +8,7 @@ final class HomeViewModel: ViewModelProtocol {
     private let input = Feedback<State, Event>.input()
     private let keychain: KeychainProtocol
     private let healthKit: HealthKit
-    let space =  Component.EmptySpace(height: 20, styleSheet: ViewStyleSheet<UIView>(backgroundColor: .lightGray))
+    let space =  Component.EmptySpace(height: 20, styleSheet: ViewStyleSheet<UIView>(backgroundColor: .white))
     init(
         scheduler: DateScheduler = QueueScheduler.main,
         businessController: BusinessControllerProtocol,
@@ -36,7 +36,13 @@ final class HomeViewModel: ViewModelProtocol {
                     businessController: businessController,
                     keychain: keychain
                 ),
-                HomeViewModel.whenUserAuthorizingHealthKitAccess(healthKit: healthKit)
+                HomeViewModel.whenUserAuthorizingHealthKitAccess(healthKit: healthKit),
+                HomeViewModel.whenPostingSteps(
+                    businessController: businessController,
+                    apiToken: apiToken,
+                    userId: userId,
+                    healthKit: healthKit
+                )
             ]
         )
     }
@@ -55,7 +61,7 @@ final class HomeViewModel: ViewModelProtocol {
     //MARK - Renderer
     public func render(state: State) -> Box<SectionId, RowId> {
         switch state {
-        case .idle, .checkingHealthKitAuthorization:
+        case .idle, .checkingHealthKitAuthorization, .postingSteps:
             return Box.empty
                 |-+ renderIdle(context: state.context)
                 |-+ renderHealthKit(context: state.context)
@@ -197,7 +203,9 @@ final class HomeViewModel: ViewModelProtocol {
             component: Component.Button(
                 title: "Generate steps randomly",
                 isEnabled: true,
-                didTap: { },
+                didTap: {
+                    self.send(action: .userDidTapGenerateStepsRandomly)
+                },
                 styleSheet: Component.Button.StyleSheet(button: ButtonStyleSheet())
             )
         )
@@ -232,6 +240,7 @@ final class HomeViewModel: ViewModelProtocol {
         case idle(Context)
         case fetchingStepsData(Context)
         case userAuthorizingHealthKitAccess(Context)
+        case postingSteps(Context)
         case checkingHealthKitAuthorization(Context)
         case logOut
         case failed
@@ -240,9 +249,11 @@ final class HomeViewModel: ViewModelProtocol {
             switch self {
             case let .idle(context),
                  let .fetchingStepsData(context),
-                 let .userAuthorizingHealthKitAccess(context):
+                 let .userAuthorizingHealthKitAccess(context),
+                 let .postingSteps(context),
+                 let .checkingHealthKitAuthorization(context):
                 return context
-            default:
+            case .logOut, .failed:
                 return Context()
             }
         }
@@ -251,13 +262,15 @@ final class HomeViewModel: ViewModelProtocol {
     struct Context: With {
         var healthKitAuthorizationStatus: HKStepsAuthorizationStatus = .unknown
         var steps: String = "0"
+        var stepsToPost: Int = 0
+        
     }
 
     enum Event {
         case ui(Action)
         case viewDidLoad
         case appBecomeActive
-        case userDidLoad(Double)
+        case userDidLoad(Int)
         case userDidLogout
         case healthKitPermissionsFinished(status: HKStepsAuthorizationStatus)
         case healthKitCheckAuthorizationStatusFinished(status: HKStepsAuthorizationStatus)
@@ -280,7 +293,10 @@ extension HomeViewModel {
         switch event {
         case .ui(.userDidTapSyncHealthKit):
             return .userAuthorizingHealthKitAccess(state.context)
-            
+
+        case .ui(.userDidTapGenerateStepsRandomly):
+            return .postingSteps(state.context)
+
         case .appBecomeActive, .viewDidLoad:
             return .checkingHealthKitAuthorization(state.context)
             
@@ -296,8 +312,6 @@ extension HomeViewModel {
             return .idle(
                 state.context.with(set(\.steps, "\(stepCount)"))
             )
-        case .ui(.userDidTapGenerateStepsRandomly):
-            return state
 
         case .ui(.userDidTapLogout):
             return .logOut
@@ -357,7 +371,29 @@ extension HomeViewModel {
             return SignalProducer.zip([healthKitSteps, userSteps])
                 .ignoreError()
                 .map {
-                    return Event.userDidLoad($0.max() ?? 0)
+                    return Event.userDidLoad(Int($0.max() ?? 0))
+                }
+        }
+    }
+
+    private static func whenPostingSteps(
+        businessController: BusinessControllerProtocol,
+        apiToken: String,
+        userId: String,
+        healthKit: HealthKit
+    ) -> Feedback<State, Event> {
+        return Feedback { state -> SignalProducer<Event, Never> in
+            guard case .postingSteps = state else { return .empty }
+            let randomSteps = Int.random(in: 0 ..< 10)
+            let healthKitSteps = healthKit.writeAndRead(steps: randomSteps, date: Date())
+
+            let userSteps = businessController.post(steps: randomSteps, apiToken: apiToken, userId: userId)
+                .map(\.stepCount)
+
+            return SignalProducer.zip([healthKitSteps, userSteps])
+                .ignoreError()
+                .map {
+                    return Event.userDidLoad(Int($0.max() ?? 0))
                 }
         }
     }

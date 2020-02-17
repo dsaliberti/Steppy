@@ -127,6 +127,10 @@ struct StubHealthKit: HealthKit {
 }
 
 final class StubBusinessController: BusinessControllerProtocol {
+    func post(steps: Int, apiToken: String, userId: String) -> SignalProducer<User, Error> {
+        return .value(User(email: "email@here.com", stepCount: 33))
+    }
+    
     func createNewSession(email: String, password: String) -> SignalProducer<Session, Error> {
         return .value(Session(apiToken: "api-token-here", userId: "user-id-here"))
     }
