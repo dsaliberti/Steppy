@@ -16,6 +16,9 @@
 		DD8CFAFB23F05C990095E71E /* SteppyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8CFAFA23F05C990095E71E /* SteppyTests.swift */; };
 		DD8CFB0823F06AEE0095E71E /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD8CFB0723F06AEE0095E71E /* HealthKit.framework */; };
 		DDCDB2B023F99AC000C91FD9 /* ViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCDB2AF23F99AC000C91FD9 /* ViewModelProtocol.swift */; };
+		DDCDB2B323F9EBD200C91FD9 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCDB2B223F9EBD200C91FD9 /* Session.swift */; };
+		DDCDB2B523F9EBE000C91FD9 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCDB2B423F9EBE000C91FD9 /* User.swift */; };
+		DDCDB2B723F9EC1D00C91FD9 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCDB2B623F9EC1D00C91FD9 /* Parser.swift */; };
 		DDD0E36E23F0CEFA00C74570 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD0E36D23F0CEFA00C74570 /* HomeViewModel.swift */; };
 		DDD0E37523F0D26A00C74570 /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD0E37423F0D26A00C74570 /* OnboardingViewModel.swift */; };
 		DDD0E37723F0D36E00C74570 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD0E37623F0D36E00C74570 /* Network.swift */; };
@@ -65,6 +68,9 @@
 		DD8CFB0723F06AEE0095E71E /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		DD8CFB0923F06AEE0095E71E /* Steppy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Steppy.entitlements; sourceTree = "<group>"; };
 		DDCDB2AF23F99AC000C91FD9 /* ViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelProtocol.swift; sourceTree = "<group>"; };
+		DDCDB2B223F9EBD200C91FD9 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
+		DDCDB2B423F9EBE000C91FD9 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		DDCDB2B623F9EC1D00C91FD9 /* Parser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
 		DDD0E36D23F0CEFA00C74570 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		DDD0E37423F0D26A00C74570 /* OnboardingViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
 		DDD0E37623F0D36E00C74570 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
@@ -144,6 +150,7 @@
 		DD8CFAE423F05C970095E71E /* Steppy */ = {
 			isa = PBXGroup;
 			children = (
+				DDCDB2B123F9EBAA00C91FD9 /* Models */,
 				DDD0E38A23F1EB4500C74570 /* Keychain */,
 				DDD0E36A23F0CE9B00C74570 /* App */,
 				DDD0E36C23F0CED300C74570 /* Onboarding */,
@@ -189,6 +196,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		DDCDB2B123F9EBAA00C91FD9 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				DDCDB2B223F9EBD200C91FD9 /* Session.swift */,
+				DDCDB2B423F9EBE000C91FD9 /* User.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		DDD0E36A23F0CE9B00C74570 /* App */ = {
 			isa = PBXGroup;
 			children = (
@@ -222,6 +238,7 @@
 			isa = PBXGroup;
 			children = (
 				DDD0E37623F0D36E00C74570 /* Network.swift */,
+				DDCDB2B623F9EC1D00C91FD9 /* Parser.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -467,6 +484,8 @@
 				DDD0E37523F0D26A00C74570 /* OnboardingViewModel.swift in Sources */,
 				DD8CFAE823F05C970095E71E /* HomeViewController.swift in Sources */,
 				DDD0E36E23F0CEFA00C74570 /* HomeViewModel.swift in Sources */,
+				DDCDB2B523F9EBE000C91FD9 /* User.swift in Sources */,
+				DDCDB2B723F9EC1D00C91FD9 /* Parser.swift in Sources */,
 				DDD0E38323F1BAE300C74570 /* AppRootBuilder.swift in Sources */,
 				DDCDB2B023F99AC000C91FD9 /* ViewModelProtocol.swift in Sources */,
 				DDD0E3A523F4BEEF00C74570 /* SignalProducerExtensions.swift in Sources */,
@@ -484,6 +503,7 @@
 				DDD0E39D23F4B77B00C74570 /* ReactiveSwiftExtensions.swift in Sources */,
 				DDD0E37E23F0D4F400C74570 /* HKViewModel.swift in Sources */,
 				DDD0E38623F1C02E00C74570 /* SteppyBusinessController.swift in Sources */,
+				DDCDB2B323F9EBD200C91FD9 /* Session.swift in Sources */,
 				DD8CFAE623F05C970095E71E /* AppDelegate.swift in Sources */,
 				DDD0E39923F2B7CC00C74570 /* UIViewExtensions.swift in Sources */,
 				DDD0E38C23F1EB8F00C74570 /* Keychain.swift in Sources */,

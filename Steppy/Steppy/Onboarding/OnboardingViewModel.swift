@@ -4,7 +4,6 @@ import Bento
 
 final class OnboardingViewModel: ViewModelProtocol {
     let state: Property<State>
-    //let routes: Signal<Route, Never>
     private let box = Box<SectionId, RowId>.empty
     private let input = Feedback<State, Event>.input()
     private let keychain: KeychainProtocol
@@ -27,14 +26,6 @@ final class OnboardingViewModel: ViewModelProtocol {
                 )
             ]
         )
-        
-//        routes = state.signal.compactMap { state -> Route? in
-//            switch state {
-//            case .succeeded:
-//                return .authenticated
-//            default: return nil
-//            }
-//        }
     }
     
     //MARK - Renderer

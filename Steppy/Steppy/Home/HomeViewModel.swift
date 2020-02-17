@@ -4,7 +4,6 @@ import Bento
 
 final class HomeViewModel: ViewModelProtocol {
     let state: Property<State>
-    //let routes: Signal<Route, Never>
     private let box = Box<SectionId, RowId>.empty
     private let input = Feedback<State, Event>.input()
     private let keychain: KeychainProtocol
@@ -42,13 +41,6 @@ final class HomeViewModel: ViewModelProtocol {
         )
     }
 
-//        routes = state.signal.compactMap { state -> Route? in
-//            switch state {
-//            case .succeeded:
-//                return .authenticated
-//            default: return nil
-//            }
-//        }
 
     //MARK - ViewLifeCycle
     func viewDidLoad() {
@@ -62,8 +54,6 @@ final class HomeViewModel: ViewModelProtocol {
     
     //MARK - Renderer
     public func render(state: State) -> Box<SectionId, RowId> {
-        print("render state", state)
-        
         switch state {
         case .idle, .checkingHealthKitAuthorization:
             return Box.empty
@@ -123,9 +113,8 @@ final class HomeViewModel: ViewModelProtocol {
                 id: .healthKitDescription,
                 component: Component.Description(
                     text: text,
-                    didTap: {
-                        print("tap")
-                    }, styleSheet: Component.Description.StyleSheet(
+                    didTap: { },
+                    styleSheet: Component.Description.StyleSheet(
                         text: LabelStyleSheet(
                             font: UIFont.preferredFont(
                                 forTextStyle: .footnote

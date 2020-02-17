@@ -50,7 +50,7 @@ public final class SteppyBusinessController: BusinessControllerProtocol {
                     return
                 }
                 
-                let result: Result<Session, Error> = self.parse(data)
+                let result: Result<Session, Error> = Parser.parse(data)
                 
                 switch result {
                 case let .success(user):
@@ -93,8 +93,8 @@ public final class SteppyBusinessController: BusinessControllerProtocol {
                     return
                 }
 
-                let result: Result<User, Error> = self.parse(data)
 
+                let result: Result<User, Error> = Parser.parse(data)
                 switch result {
                 case let .success(user):
                     observer.send(value: user)
@@ -105,10 +105,6 @@ public final class SteppyBusinessController: BusinessControllerProtocol {
         }
     }
 
-    //TODO: - refactor and extract to its own file
-    public func parse<T>(_ data: Data) -> Result<T, Error> where T: Decodable {
-        return Result<T, Error> { try JSONDecoder().decode(T.self, from: data) }
-            //.mapError { .parser(String(describing: $0.localizedDescription)) }
     }
 }
 
@@ -130,42 +126,5 @@ extension SteppyBusinessController {
         }
 
         return request
-    }
-}
-
-//TODO: - extract to its own file
-public struct User {
-    let email: String
-    let stepCount: Double
-}
-
-extension User: Decodable {
-    public init(from decoder: Decoder) throws {
-        let values = try decoder.container(keyedBy: CodingKeys.self)
-        email = try values.decode(String.self, forKey: .email)
-        stepCount = try values.decode(Double.self, forKey: .stepCount)
-    }
-
-    enum CodingKeys: String, CodingKey {
-        case email
-        case stepCount = "step_count"
-    }
-}
-
-public struct Session {
-    let apiToken: String
-    let userId: String
-}
-
-extension Session: Decodable {
-    enum CodingKeys: String, CodingKey {
-        case apiToken = "token"
-        case userId = "user_id"
-    }
-
-    public init(from decoder: Decoder) throws {
-        let values = try decoder.container(keyedBy: CodingKeys.self)
-        apiToken = try values.decode(String.self, forKey: .apiToken)
-        userId = try values.decode(String.self, forKey: .userId)
     }
 }
